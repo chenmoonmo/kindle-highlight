@@ -212,36 +212,6 @@ export const ClippingsRead: React.FC = () => {
           );
         })}
       </div>
-
-      {/* <Grid columns="repeat(3,368px)" rows="auto" gap="3" justify="start">
-        {records.map((record, index) => (
-          <div key={record.title + record.start + record.end} className="p-4">
-            <KindleContainer>
-              <Text
-                className="bg-gray-200 font-medium text-sm  drop-shadow-sm blur-[0.3px]"
-                size="1"
-                style={{
-                  fontFamily: "Amazon Ember",
-                  textShadow: "2px 1px 2px rgba(0,0,0,0.15)",
-                }}
-              >
-                {record.text}
-              </Text>
-              <Text
-                size="1"
-                className="absolute bottom-1 left-2 text-xs font-bold border-gray-200 blur-[0.3px]"
-                style={{
-                  fontFamily: "Amazon Ember",
-                  textShadow: "2px 1px 2px rgba(0,0,0,0.15)",
-                  zoom: 0.8,
-                }}
-              >
-                {record.title}
-              </Text>
-            </KindleContainer>
-          </div>
-        ))}
-      </Grid> */}
     </>
   );
 };

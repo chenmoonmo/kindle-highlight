@@ -5,8 +5,8 @@ export const useSystemInfo = () => {
 
   const getBattery = async () => {
     // @ts-ignore
-    const battery = await navigator.getBattery();
-    setBattery(battery.level * 100);
+    // const battery = await navigator.getBattery();
+    // setBattery(battery.level * 100);
   };
 
   useEffect(() => {

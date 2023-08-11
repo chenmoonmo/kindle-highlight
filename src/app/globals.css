@@ -13,6 +13,7 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --app-height: 100%;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -25,6 +26,15 @@
 
 body {
   font-family: Amazon Ember, Helvetica, Arial, sans-serif;
+}
+
+body main {
+  height: 100vh;
+  height: var(--app-height);
+}
+
+.kindle-screen {
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
 }
 
 .kindle-screen::after {
@@ -54,6 +64,16 @@ body {
   border-radius: 0 0 0.125rem 0.125rem;
   box-shadow: inset 0 0 2px rgba(186, 186, 186, 0.9);
   transform: translate(0, 100%);
+}
+
+.scroll-area {
+  /* hidden scroll bar */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scroll-area::-webkit-scrollbar {
+  /* hidden scroll bar */
+  display: none;
 }
 
 @media screen and (max-width: 768px) {

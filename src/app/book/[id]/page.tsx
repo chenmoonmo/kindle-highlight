@@ -13,20 +13,17 @@ export default function Book({
   return (
     <>
       <div
-        className="absolute top-0 left-0 flex justify-center w-full px-2 pb-1 text-xs font-semibold !bg-[#fffffd] z-20"
+        className="absolute top-0 left-0 flex justify-center w-full px-2 py-1 text-sm font-semibold !bg-[#fffffd] z-20 md:text-xs"
         style={{
           zoom: 0.8,
         }}
       >
-        <span>下午 5:02</span>
+        <Text>下午 5:02</Text>
       </div>
-      <div className="flex flex-col flex-auto overflow-scroll p-2 pb-4 divide-y-2 divide-dotted space-y-3 scroll-smooth snap-y">
+      <div className="scroll-area flex flex-col flex-auto overflow-scroll p-2 py-4 divide-y-2 divide-dotted space-y-5 md:space-y-3 scroll-smooth snap-y">
         {book?.records.map((record) => (
           <div key={record.start + record.time}>
-            <Text
-              className="bg-gray-200 font-medium text-sm drop-shadow-sm scorll-mt-2  snap-start"
-              size="1"
-            >
+            <Text className="bg-gray-200 font-medium drop-shadow-sm scorll-mt-2 snap-start leading-8 text-md md:text-xs">
               {record.text}
             </Text>
           </div>
@@ -39,9 +36,9 @@ export default function Book({
           zoom: 0.8,
         }}
       >
-        <div className="w-[80%] whitespace-nowrap text-ellipsis overflow-hidden">
+        <Text className="w-[80%] whitespace-nowrap text-ellipsis overflow-hidden">
           {book?.title}
-        </div>
+        </Text>
       </Text>
     </>
   );

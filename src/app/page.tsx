@@ -1,5 +1,5 @@
-import { ClippingsRead } from "./clippings-read";
-// import { TextField } from "@radix-ui/themes";
+// import { ClippingsRead } from "./clippings-read";
+import { Flex, Text } from "@radix-ui/themes";
 // @ts-ignore
 import { KindleHeader } from "@/components";
 import books from "@/mock/books.json";
@@ -9,9 +9,6 @@ import { Search } from "./search";
 export default function Home() {
   return (
     <>
-      {/* <label>
-        <input type="file" accept="*,.txt" onChange={handleFileChange} />
-      </label> */}
       <KindleHeader />
       <Search />
       <div className="divide-y-2 px-2 mt-1">
@@ -19,22 +16,21 @@ export default function Home() {
           return (
             <Link
               key={book.title + book.author}
-              className="flex justify-between items-center p-2 pt-1 pr-1 text-xs font-semibold hover:bg-gray-200 cursor-pointer"
+              className="flex justify-between items-center p-2 pt-1 pr-1 md:text-xs font-semibold hover:bg-gray-200 cursor-pointer"
               href={`/book/${book.id}`}
             >
-              <div className="flex-1 max-w-[90%]">
-                <div className="text-ellipsis whitespace-nowrap overflow-hidden">
+              <Flex direction="column" gap="1" className="flex-1 max-w-[90%]">
+                <Text className="text-ellipsis whitespace-nowrap overflow-hidden">
                   {book.title}
-                </div>
-                <div
-                  className="mt-1"
+                </Text>
+                <Text
                   style={{
                     zoom: 0.8,
                   }}
                 >
                   {book.author}
-                </div>
-              </div>
+                </Text>
+              </Flex>
               <div className="rounded-full p-1 hover:bg-gray-400">
                 <svg
                   width="15"
