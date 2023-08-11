@@ -16,7 +16,7 @@ export default function Home() {
           return (
             <Link
               key={book.title + book.author}
-              className="flex justify-between items-center p-2 pt-1 pr-1 md:text-xs font-semibold hover:bg-gray-200 cursor-pointer"
+              className="flex justify-between items-center p-2 pt-1 pr-1 sm:text-xs font-semibold hover:bg-gray-200 cursor-pointer"
               href={`/book/${book.id}`}
             >
               <Flex direction="column" gap="1" className="flex-1 max-w-[90%]">
