@@ -17,7 +17,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Theme>
-          <main className="flex min-h-screen flex-col items-center justify-between p-24">
+          <main className="flex min-h-screen flex-col items-center justify-between sm:p-24">
             <KindleContainer>{children}</KindleContainer>
           </main>
         </Theme>
