@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: Amazon Ember;
+  src: url("/AmazonEmber_Rg.ttf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -17,11 +24,35 @@
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  font-family: Amazon Ember, Helvetica, Arial, sans-serif;
+}
+
+.kindle-screen::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 0.125rem;
+  box-shadow: inset 3px 2px 6px rgba(0, 0, 0, 0.9),
+    inset -1px -1px 2px rgba(0, 0, 0, 0.9);
+  pointer-events: none;
+}
+
+.kindle-farme::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 60%;
+  z-index: 100;
+  display: block;
+  width: 30px;
+  height: 3px;
+  background: black;
+  border-radius: 0 0 0.125rem 0.125rem;
+  box-shadow: inset 0 0 2px rgba(186, 186, 186, 0.9);
+  transform: translate(0, 100%);
 }
