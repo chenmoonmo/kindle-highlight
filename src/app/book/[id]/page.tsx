@@ -22,7 +22,7 @@ export default function Book({
       </div>
       <div className="flex flex-col flex-auto overflow-scroll p-2 pb-4 divide-y-2 divide-dotted space-y-3 scroll-smooth snap-y">
         {book?.records.map((record) => (
-          <div key={record.start + record.end + record.time}>
+          <div key={record.start + record.time}>
             <Text
               className="bg-gray-200 font-medium text-sm drop-shadow-sm scorll-mt-2  snap-start"
               size="1"
