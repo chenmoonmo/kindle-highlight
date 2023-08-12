@@ -71,12 +71,13 @@ body main {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
 .scroll-area::-webkit-scrollbar {
   /* hidden scroll bar */
   display: none;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 640px) {
   .kindle-screen::after {
     display: none;
   }

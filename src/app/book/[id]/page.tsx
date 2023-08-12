@@ -36,7 +36,7 @@ export default function Book({
           zoom: 0.8,
         }}
       >
-        <Text className="w-[80%] whitespace-nowrap text-ellipsis overflow-hidden">
+        <Text className="block w-[80%] whitespace-nowrap text-ellipsis overflow-hidden">
           {book?.title}
         </Text>
       </Text>
