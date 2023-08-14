@@ -1,24 +1,36 @@
 import { Flex, IconButton, Text } from "@radix-ui/themes";
 import Link from "next/link";
 import React from "react";
+import cn from "classnames";
 
 type KindleSubHeaderProps = {
   title?: string;
+  className?: string;
 };
 
-export const KindleSubHeader: React.FC<KindleSubHeaderProps> = ({ title }) => {
+export const KindleSubHeader: React.FC<KindleSubHeaderProps> = ({
+  title,
+  className,
+}) => {
   return (
     <Flex
       justify="between"
       align="center"
       px="2"
       py="1"
-      className=" border-b-[1px]"
+      className={cn(["border-b-[1px] w-full", className])}
     >
-      <Text size="2" weight="bold">
+      <Text
+        size="2"
+        weight="bold"
+        className="whitespace-nowrap overflow-hidden text-ellipsis"
+      >
         {title}
       </Text>
-      <Link href="../" className="block p-2 fill-current hover:bg-black hover:fill-white">
+      <Link
+        href="../"
+        className="block p-2 fill-current hover:bg-black hover:fill-white"
+      >
         <svg
           width="15"
           height="15"
