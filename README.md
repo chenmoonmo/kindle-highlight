@@ -4,7 +4,7 @@
 </div>
 本项目是一个仿 Kindle 的阅读笔记展示网站。 目前仅支持中文笔记，欢迎提 PR 以提供更多语言的支持或其他功能支持。
 
-### [Live Demo](moonlight.zeabur.com)
+### <a href="https://moonlight.zeabur.com" target="_blank">Live Demo</a>
 
 ### 使用方法：
 
