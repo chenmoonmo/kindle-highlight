@@ -37,7 +37,7 @@ export default function About() {
           </svg>
         </Link>
         <Heading size="2">使用方法：</Heading>
-        <Text size="1">1. fork 本项目</Text>
+        <Text size="1">1. fork 本项目。</Text>
         <Text size="1">
           2. 连接你的 Kindle，将{" "}
           <Text weight="medium" className=" bg-black text-white">

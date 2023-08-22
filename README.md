@@ -8,7 +8,7 @@
 
 ### 使用方法：
 
-1. fork 本项目
+1. fork 本项目。
 2. 连接你的 Kindle，将 My Clippings.txt 文件拷贝到项目的 public 目录下。
 3. 修改 env 文件中的 NEXT_PUBLIC_USER。
 4. 运行pnpm run build 和 pnpm run start。
