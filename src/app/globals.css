@@ -52,6 +52,7 @@ body main {
 }
 
 .kindle-button {
+  display: block;
   position: absolute;
   bottom: -5px;
   left: 60%;
@@ -83,4 +84,8 @@ body main {
   .kindle-farme::after {
     display: none;
   }
+  .kindle-button  {
+    display: none;
+  }
+
 }

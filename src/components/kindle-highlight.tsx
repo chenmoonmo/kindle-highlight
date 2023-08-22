@@ -39,7 +39,7 @@ export const KindleHighlight = ({ data }: KindleHighlightProps) => {
         size="1"
         side="top"
         sideOffset={-8}
-        className="!rounded-none border-2 border-black blur-[0.1px] sm:blur-[0.3px]"
+        className="!rounded-none border-2 border-black blur-none sm:blur-[0.3px]"
       >
         {data.notes.map((note, index) => (
           <Text key={index} weight="bold" className="text-md sm:text-xs">

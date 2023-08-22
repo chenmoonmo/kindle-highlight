@@ -25,7 +25,7 @@ export const Cover = () => {
       src="/covers/cover-1.webp"
       fill
       alt={""}
-      className="absolute z-[100] blur-[0.1px] sm:blur-[0.3px]"
+      className="absolute z-[100] blur-none sm:blur-[0.3px]"
       animate={isOn ? "visible" : "hidden"}
       variants={variants}
       transition={{ duration: 1 }}

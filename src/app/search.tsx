@@ -45,7 +45,7 @@ export const Search = () => {
         <Popover.Content
           align="start"
           alignOffset={-140}
-          className="!rounded-none !border-2 !border-black w-40 blur-[0.1px] sm:blur-[0.3px]"
+          className="!rounded-none !border-2 !border-black w-40 blur-none sm:blur-[0.3px]"
         >
           <Flex direction="column">
             <Link
