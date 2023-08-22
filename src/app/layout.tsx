@@ -4,10 +4,22 @@ import { Theme, ThemePanel } from "@radix-ui/themes";
 import "@radix-ui/themes/styles.css";
 import { KindleContainer } from "@/components";
 import { Provider } from "./provider";
-import './theme-config.css'
+import "./theme-config.css";
 
 export const metadata: Metadata = {
-  title: "moon 的 Kindle",
+  title: `${process.env.NEXT_PUBLIC_USER} 的 Kindle`,
+  description: `${process.env.NEXT_PUBLIC_USER} 的 Kindle 笔记。`,
+  twitter: {
+    card: "summary",
+    title: `${process.env.NEXT_PUBLIC_USER} 的 Kindle`,
+    description: `${process.env.NEXT_PUBLIC_USER} 的 Kindle 笔记。`,
+  },
+  openGraph: {
+    title: `${process.env.NEXT_PUBLIC_USER} 的 Kindle`,
+    description: `${process.env.NEXT_PUBLIC_USER} 的 Kindle 笔记。`,
+    type: "website",
+    locale: "zh_CN",
+  },
 };
 
 export default function RootLayout({

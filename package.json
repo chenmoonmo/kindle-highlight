@@ -18,6 +18,8 @@
     "dayjs": "^1.11.9",
     "eslint": "8.46.0",
     "eslint-config-next": "13.4.13",
+    "framer-motion": "^10.16.1",
+    "jotai": "^2.3.1",
     "kindle-zhcn-clippings-to-json": "^1.1.1",
     "next": "13.4.13",
     "postcss": "8.4.27",

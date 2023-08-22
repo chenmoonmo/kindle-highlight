@@ -28,7 +28,7 @@ export default async function Book({
           <KindleHighlight key={record.id} data={record} />
         ))}
       </div>
-      <Text
+      {/* <Text
         size="1"
         as="div"
         align="right"
@@ -38,7 +38,7 @@ export default async function Book({
         }}
       >
         剩余 1 分
-      </Text>
+      </Text> */}
     </>
   );
 }

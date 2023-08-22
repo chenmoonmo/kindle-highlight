@@ -18,13 +18,17 @@ export const KindleHighlight = ({ data }: KindleHighlightProps) => {
   );
 
   if (!data.notes.length) {
-    return <div id={`highlight${data.id}`}>{content}</div>;
+    return (
+      <div id={`highlight${data.id}`} className="pt-2">
+        {content}
+      </div>
+    );
   }
 
   return (
     <Popover.Root>
-      <Popover.Trigger id={`highlight${data.id}`} className="cursor-pointer">
-        <div>
+      <Popover.Trigger>
+        <div id={`highlight${data.id}`} className="pt-2 cursor-pointer">
           {content}{" "}
           <Text className="bg-black text-white align-text-top text-xs select-none">
             {data.notes.length}
@@ -34,6 +38,7 @@ export const KindleHighlight = ({ data }: KindleHighlightProps) => {
       <Popover.Content
         size="1"
         side="top"
+        sideOffset={-8}
         className="!rounded-none border-2 border-black blur-[0.1px] sm:blur-[0.3px]"
       >
         {data.notes.map((note, index) => (

@@ -7,7 +7,7 @@ import { Flex, Text } from "@radix-ui/themes";
 export const KindleHeader = () => {
   const time = useFormatedTime();
   // const { battery } = useSystemInfo();
-  
+
   return (
     <Flex
       justify="between"
@@ -18,7 +18,7 @@ export const KindleHeader = () => {
         zoom: 0.8,
       }}
     >
-      <Text>moon 的 Kindle</Text>
+      <Text>{process.env.NEXT_PUBLIC_USER} 的 Kindle</Text>
       <div className="flex gap-1">
         <span className="flex items-center gap-[1px]">
           <Text>80%</Text>

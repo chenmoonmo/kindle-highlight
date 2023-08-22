@@ -51,8 +51,7 @@ body main {
   pointer-events: none;
 }
 
-.kindle-farme::after {
-  content: "";
+.kindle-button {
   position: absolute;
   bottom: -5px;
   left: 60%;
