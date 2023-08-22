@@ -1,12 +1,12 @@
 "use client";
 
 import { useFormatedTime } from "@/hooks/use-formated-time";
-import { useSystemInfo } from "@/hooks/use-system-info";
+// import { useSystemInfo } from "@/hooks/use-system-info";
 import { Flex, Text } from "@radix-ui/themes";
 
 export const KindleHeader = () => {
   const time = useFormatedTime();
-  const { battery } = useSystemInfo();
+  // const { battery } = useSystemInfo();
   
   return (
     <Flex
@@ -21,7 +21,7 @@ export const KindleHeader = () => {
       <Text>moon 的 Kindle</Text>
       <div className="flex gap-1">
         <span className="flex items-center gap-[1px]">
-          <Text>{battery}%</Text>
+          <Text>80%</Text>
           <svg
             viewBox="0 0 1828 1024"
             version="1.1"

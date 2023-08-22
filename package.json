@@ -1,5 +1,5 @@
 {
-  "name": "radix-theme-try",
+  "name": "kindle-highlight",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "@radix-ui/themes": "^1.0.0",
-    "@supabase/supabase-js": "^2.32.0",
     "@types/node": "20.4.9",
     "@types/react": "18.2.20",
     "@types/react-dom": "18.2.7",

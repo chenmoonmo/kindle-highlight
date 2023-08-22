@@ -49,24 +49,6 @@ export const Search = () => {
         >
           <Flex direction="column">
             <Link
-              href="/auth"
-              className="px-1 py-2 cursor-pointer hover:bg-black hover:text-white"
-            >
-              <Text size="2" weight="bold">
-                登录
-              </Text>
-            </Link>
-
-            <Link
-              href="/update"
-              className="px-1 py-2 cursor-pointer hover:bg-black hover:text-white"
-            >
-              <Text size="2" weight="bold">
-                更新我的书摘
-              </Text>
-            </Link>
-
-            <Link
               href="/about"
               className="px-1 py-2 cursor-pointer hover:bg-black hover:text-white"
             >

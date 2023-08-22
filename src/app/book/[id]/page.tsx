@@ -1,15 +1,16 @@
-import { Flex, Text } from "@radix-ui/themes";
-import books from "@/mock/books.json";
-import { KindleSubHeader } from "@/components";
+import { Flex, Text, Tooltip } from "@radix-ui/themes";
+import { KindleHighlight, KindleSubHeader } from "@/components";
 import { Time } from "./time";
+import { getClippings } from "@/utils";
 
-export default function Book({
+export default async function Book({
   params: { id },
 }: {
   params: {
     id: string;
   };
 }) {
+  const books = await getClippings();
   const book = books.find((book) => book.id === Number(id));
 
   return (
@@ -24,11 +25,7 @@ export default function Book({
       </Flex>
       <div className="scroll-area flex flex-col flex-auto overflow-scroll p-2 py-2 divide-y-2 divide-dotted space-y-5 sm:space-y-3 scroll-smooth snap-y">
         {book?.records.map((record) => (
-          <div key={record.start + record.time}>
-            <Text className="bg-gray-200 font-medium drop-shadow-sm scorll-mt-2 snap-start leading-8 text-md sm:text-xs">
-              {record.text}
-            </Text>
-          </div>
+          <KindleHighlight key={record.id} data={record} />
         ))}
       </div>
       <Text
