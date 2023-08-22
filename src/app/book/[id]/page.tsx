@@ -3,6 +3,21 @@ import { KindleHighlight, KindleSubHeader } from "@/components";
 import { Time } from "./time";
 import { getClippings } from "@/utils";
 
+export const generateMetadata = async ({
+  params: { id },
+}: {
+  params: {
+    id: string;
+  };
+}) => {
+  const books = await getClippings();
+  const book = books.find((book) => book.id === Number(id));
+
+  return {
+    title: book?.title,
+  };
+};
+
 export default async function Book({
   params: { id },
 }: {

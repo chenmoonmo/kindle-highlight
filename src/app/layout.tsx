@@ -7,7 +7,10 @@ import { Provider } from "./provider";
 import "./theme-config.css";
 
 export const metadata: Metadata = {
-  title: `${process.env.NEXT_PUBLIC_USER} 的 Kindle`,
+  title: {
+    template: `%s | ${process.env.NEXT_PUBLIC_USER} 的 Kindle`,
+    default: `${process.env.NEXT_PUBLIC_USER} 的 Kindle`
+  },
   description: `${process.env.NEXT_PUBLIC_USER} 的 Kindle 笔记。`,
   twitter: {
     card: "summary",
@@ -20,6 +23,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "zh_CN",
   },
+  icons: "/favicon.png",
 };
 
 export default function RootLayout({
