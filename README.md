@@ -1,5 +1,5 @@
 ### 项目介绍：
-<div>
+<div align="center">
   <img src="https://github.com/chenmoonmo/my-highlight/assets/36295999/584433c6-dbe7-4c29-b827-10edac5a0143" width="350" /> 
 </div>
 本项目是一个仿 Kindle 的阅读笔记展示网站。 目前仅支持中文笔记，欢迎提 PR 以提供更多语言的支持或其他功能支持。
