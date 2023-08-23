@@ -1,8 +1,7 @@
 "use client";
 import Image from "next/image";
-import { useEffect, useState } from "react";
 import { Variants, motion } from "framer-motion";
-import { useAtom, useAtomValue } from "jotai";
+import { useAtomValue } from "jotai";
 import { isOnAtom } from "@/atom";
 
 const MotionImage = motion(Image);
@@ -24,11 +23,15 @@ export const Cover = () => {
     <MotionImage
       src="/covers/cover-1.webp"
       fill
-      alt={""}
+      priority
+      alt="kindle cover"
       className="absolute z-[100] blur-none sm:blur-[0.3px]"
       animate={isOn ? "visible" : "hidden"}
       variants={variants}
-      transition={{ duration: 1 }}
+      transition={{
+        delay: 0.3,
+        duration: 1,
+      }}
     />
   );
 };
