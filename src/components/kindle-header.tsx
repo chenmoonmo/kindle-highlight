@@ -21,7 +21,7 @@ export const KindleHeader = () => {
       <Text>{process.env.NEXT_PUBLIC_USER} 的 Kindle</Text>
       <div className="flex gap-1">
         <span className="flex items-center gap-[1px]">
-          <Text>80%</Text>
+          <Text>100%</Text>
           <svg
             viewBox="0 0 1828 1024"
             version="1.1"

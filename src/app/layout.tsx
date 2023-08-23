@@ -1,6 +1,6 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Theme, ThemePanel } from "@radix-ui/themes";
+import { Theme } from "@radix-ui/themes";
 import "@radix-ui/themes/styles.css";
 import { KindleContainer } from "@/components";
 import { Provider } from "./provider";
@@ -9,7 +9,7 @@ import "./theme-config.css";
 export const metadata: Metadata = {
   title: {
     template: `%s | ${process.env.NEXT_PUBLIC_USER} 的 Kindle`,
-    default: `${process.env.NEXT_PUBLIC_USER} 的 Kindle`
+    default: `${process.env.NEXT_PUBLIC_USER} 的 Kindle`,
   },
   description: `${process.env.NEXT_PUBLIC_USER} 的 Kindle 笔记。`,
   twitter: {
