@@ -68,8 +68,8 @@ export async function getClippings() {
       if (
         record.start &&
         record.end &&
-        record.start >= note.start &&
-        record.end <= note.start
+        record.start <= note.start &&
+        record.end >= note.start
       ) {
         record.notes.push({
           start: note.start,
