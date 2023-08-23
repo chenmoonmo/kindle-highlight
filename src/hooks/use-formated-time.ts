@@ -7,7 +7,7 @@ const getFormatedTime = () => {
     PM: "下午",
   };
   const A = dayjs().format("A") as keyof typeof zhA;
-  const time = dayjs().format("HH:mm");
+  const time = dayjs().format("hh:mm");
   return `${zhA[A]} ${time}`;
 };
 
