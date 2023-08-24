@@ -34,7 +34,7 @@ export default async function SeachPage({
         px="2"
         direction="column"
         align="stretch"
-        className="divide-y-2 flex-1 overflow-scroll scroll-smooth scroll-area"
+        className="divide-y-2 mt-1 flex-1 overflow-scroll scroll-smooth scroll-area"
       >
         {currentHighlights?.map((highlight) => {
           const showText =
