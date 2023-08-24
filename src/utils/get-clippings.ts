@@ -1,21 +1,15 @@
 import { toObject } from "kindle-zhcn-clippings-to-json";
 import { headers } from "next/headers";
 
-type NoteType = {
-  start: number;
-  end: number;
-  content: string;
-};
-
-export type RecordType = ReturnType<typeof toObject>[number] & {
+export type HighlightType = ReturnType<typeof toObject>[number] & {
   id: number;
-  notes: NoteType[];
+  notes: ReturnType<typeof toObject>[number][];
 };
 
 type BookType = {
   title: string;
   author?: string;
-  records: RecordType[];
+  highlights: HighlightType[];
   id: number;
 };
 
@@ -32,31 +26,31 @@ export async function getClippings() {
     return response.text();
   });
 
-  const json = toObject(myClippings);
+  const clippings = toObject(myClippings);
   const books: {
     [key: string]: BookType;
   } = {};
   const notes: any[] = [];
   let id = 0;
-  let recordId = 0;
+  let highlightId = 0;
 
-  json.map((record) => {
-    if (record.title) {
-      if (!books[record.title]) {
+  clippings.map((clipping) => {
+    if (clipping.title) {
+      if (!books[clipping.title]) {
         const book = {
-          title: record.title,
-          author: record.author,
-          records: [],
+          title: clipping.title,
+          author: clipping.author,
+          highlights: [],
           id: id++,
         };
-        books[record.title] = book;
+        books[clipping.title] = book;
       }
-      if (record.type === "Note") {
-        notes.push(record);
+      if (clipping.type === "Note") {
+        notes.push(clipping);
       } else {
-        books[record.title].records.push({
-          ...record,
-          id: recordId++,
+        books[clipping.title].highlights.push({
+          ...clipping,
+          id: highlightId++,
           notes: [],
         });
       }
@@ -64,20 +58,14 @@ export async function getClippings() {
   });
 
   notes.map((note) => {
-    books[note.title].records.forEach((record) => {
-      if (
-        record.start &&
-        record.end &&
-        record.start <= note.start &&
-        record.end >= note.start
-      ) {
-        record.notes.push({
-          start: note.start,
-          end: note.end,
-          content: note.text,
-        });
-      }
-    });
+    const currentHighlights = books[note.title].highlights.find(
+      (highlight) =>
+        highlight.start &&
+        highlight.end &&
+        highlight.start <= note.start &&
+        highlight.end >= note.start
+    );
+    currentHighlights?.notes.push(note);
   });
 
   return Object.values(books);

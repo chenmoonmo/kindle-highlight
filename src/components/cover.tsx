@@ -25,7 +25,7 @@ export const Cover = () => {
       fill
       priority
       alt="kindle cover"
-      className="absolute z-[100] blur-none sm:blur-[0.3px]"
+      className="absolute z-[100] blur-none sm:blur-[0.02vh]"
       animate={isOn ? "visible" : "hidden"}
       variants={variants}
       transition={{

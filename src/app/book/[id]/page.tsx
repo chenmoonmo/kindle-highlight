@@ -39,8 +39,8 @@ export default async function Book({
         <KindleSubHeader title={book?.title} className="!pt-0" />
       </Flex>
       <div className="scroll-area flex flex-col flex-auto overflow-scroll p-2 py-2 divide-y-2 divide-dotted space-y-5 sm:space-y-3 scroll-smooth snap-y">
-        {book?.records.map((record) => (
-          <KindleHighlight key={record.id} data={record} />
+        {book?.highlights.map((highlight) => (
+          <KindleHighlight key={highlight.id} data={highlight} />
         ))}
       </div>
       {/* <Text

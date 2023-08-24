@@ -1,10 +1,10 @@
 "use client";
-import { RecordType } from "@/utils";
+import { HighlightType } from "@/utils";
 import { Popover, Text } from "@radix-ui/themes";
 import { useMemo } from "react";
 
 type KindleHighlightProps = {
-  data: RecordType;
+  data: HighlightType;
 };
 
 export const KindleHighlight = ({ data }: KindleHighlightProps) => {
@@ -39,12 +39,12 @@ export const KindleHighlight = ({ data }: KindleHighlightProps) => {
         size="1"
         side="top"
         sideOffset={-8}
-        className="!rounded-none border-2 border-black blur-none sm:blur-[0.3px]"
+        className="!rounded-none border-2 border-black blur-none sm:blur-[0.02vh]"
       >
         {data.notes.map((note, index) => (
           <Text key={index} weight="bold" className="text-md sm:text-xs">
             <Text weight="light">{index + 1}. </Text>
-            {note.content}
+            {note.text}
           </Text>
         ))}
       </Popover.Content>
