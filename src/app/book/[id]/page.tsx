@@ -2,6 +2,7 @@ import { Flex, Text, Tooltip } from "@radix-ui/themes";
 import { KindleHighlight, KindleSubHeader } from "@/components";
 import { Time } from "./time";
 import { getClippings } from "@/utils";
+import { notFound } from "next/navigation";
 
 export const generateMetadata = async ({
   params: { id },
@@ -27,6 +28,10 @@ export default async function Book({
 }) {
   const books = await getClippings();
   const book = books.find((book) => book.id === Number(id));
+
+  if (!book) {
+    notFound();
+  }
 
   return (
     <>
