@@ -8,16 +8,10 @@ const fonts =
 export const GET = async (request: Request) => {
   const params = new URL(request.url).searchParams;
   const id = params.get("id");
-  const __next__base__dirname = __dirname.split(".next")[0];
 
   GlobalFonts.registerFromPath(
     path.join(process.cwd(), "/public/NotoSansSC-VariableFont_wght.ttf"),
     "Noto Sans SC"
-  );
-
-  console.log(
-    path.join(process.cwd(), "/public/NotoSansSC-VariableFont_wght.ttf"),
-    GlobalFonts.families.filter((item) => item.family.includes("SC"))
   );
 
   let book = null;
@@ -99,7 +93,7 @@ export const GET = async (request: Request) => {
     book.highlights.map((highlight) => {
       if (startY < 350)
         if (highlight.text) {
-          ctx.font = `24px ${fonts}`;
+          ctx.font = `600 24px ${fonts}`;
           const textHeight = drawText(highlight.text, 80, startY);
           startY += textHeight + 20;
         }
