@@ -19,7 +19,7 @@ export async function getClippings() {
   const host = headers().get("host");
   const protocal = process?.env.NODE_ENV === "development" ? "http" : "https";
 
-  const __next__base__dirname = __dirname.split(".next")[0];
+  // const __next__base__dirname = __dirname.split(".next")[0];
 
 
   const myClippings = await fetch(`${protocal}://${host}/My Clippings.txt`, {

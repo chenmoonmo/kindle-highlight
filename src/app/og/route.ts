@@ -13,10 +13,10 @@ export const GET = async (request: Request) => {
     book = books[+id];
   }
 
-  const canvas = createCanvas(1500, 750);
+  const canvas = createCanvas(1024, 536);
   const ctx = canvas.getContext("2d");
 
-  function getWrapText(text = "", maxWidth = 1300) {
+  function getWrapText(text = "", maxWidth = 840) {
     let txtList = [];
     let str = "";
     for (let i = 0, len = text.length; i < len; i++) {
@@ -31,17 +31,12 @@ export const GET = async (request: Request) => {
     return txtList;
   }
 
-  function drawText(text: string, x = 0, y = 0, lineHeight = 46) {
+  function drawText(text: string, x = 0, y = 0, lineHeight = 38) {
     const txtList = getWrapText(text);
     txtList.forEach((txt, index) => {
       const textWidth = ctx.measureText(txt).width;
       ctx.fillStyle = "#e7e7e7";
-      ctx.fillRect(
-        x,
-        y + lineHeight * index - 36 + 2,
-        textWidth,
-        lineHeight - 4
-      );
+      ctx.fillRect(x, y + lineHeight * index - 24, textWidth, lineHeight - 4);
       ctx.fillStyle = "#000";
       ctx.fillText(txt, x, y + lineHeight * index);
     });
@@ -49,51 +44,51 @@ export const GET = async (request: Request) => {
   }
 
   ctx.fillStyle = "#fff";
-  ctx.fillRect(0, 0, 1500, 750);
+  ctx.fillRect(0, 0, 1024, 536);
   ctx.fillStyle = "#4B4B4B";
   ctx.beginPath();
-  ctx.roundRect(0, 0, 1500, 750, 42);
+  ctx.roundRect(15, 15, 994, 506, 32);
   ctx.closePath();
   ctx.fill();
 
   ctx.fillStyle = "#000";
   ctx.beginPath();
-  ctx.roundRect(25, 20, 1450, 694, 42);
+  ctx.roundRect(20, 20, 984, 496, 30);
   ctx.closePath();
   ctx.fill();
 
   ctx.fillStyle = "#FFFFFD";
   ctx.beginPath();
-  ctx.roundRect(58, 48, 1384, 557, 10);
+  ctx.roundRect(40, 40, 944, 400, 20);
   ctx.closePath();
   ctx.fill();
 
   ctx.fillStyle = "#fff";
   ctx.font = `bold 40px ${fonts}`;
-  ctx.fillText("Kindle", 687, 629 + 40);
+  ctx.fillText("Kindle", 460, 453 + 40);
 
   if (book) {
     ctx.fillStyle = "#000";
-    ctx.font = `bold 50px ${fonts}`;
+    ctx.font = `bold 36px ${fonts}`;
     const showTitle =
       book.title.length > 15 ? book.title.slice(0, 15) + "..." : book.title;
-    ctx.fillText(showTitle, 103, 110);
+    ctx.fillText(showTitle, 80, 96);
 
     if (book.author) {
       const showTitleLengh = ctx.measureText(showTitle).width;
       ctx.font = `bold 24px ${fonts}`;
-
-      ctx.fillText(book.author, 103 + showTitleLengh + 20, 110);
+      ctx.fillStyle = "#4c4c4c";
+      ctx.fillText(book.author, 80 + showTitleLengh + 20, 96);
     }
 
     ctx.fillStyle = "#000";
-    let startY = 96 + 90;
+    let startY = 96 + 20 + 36;
     book.highlights.map((highlight) => {
-      if (startY < 500)
+      if (startY < 350)
         if (highlight.text) {
-          ctx.font = `bold 36px ${fonts}`;
-          const textHeight = drawText(highlight.text, 103, startY);
-          startY += textHeight + 45;
+          ctx.font = `24px ${fonts}`;
+          const textHeight = drawText(highlight.text, 80, startY);
+          startY += textHeight + 20;
         }
     });
   } else {
