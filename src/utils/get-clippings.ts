@@ -21,7 +21,6 @@ export async function getClippings() {
 
   // const __next__base__dirname = __dirname.split(".next")[0];
 
-
   const myClippings = await fetch(`${protocal}://${host}/My Clippings.txt`, {
     method: "GET",
     next: {
@@ -36,7 +35,6 @@ export async function getClippings() {
   // });
 
   // console.log('myClippings2',myClippings2)
-  
 
   const clippings = toObject(myClippings);
   const books: {
