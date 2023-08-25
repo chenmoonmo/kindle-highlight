@@ -1,11 +1,22 @@
 import { getClippings } from "@/utils";
-import { createCanvas } from "@napi-rs/canvas";
+import { createCanvas, GlobalFonts } from "@napi-rs/canvas";
+import path from "path";
 
-const fonts = "PingFang SC, Hiragino Sans GB, Heiti SC, Microsoft YaHei";
+const fonts =
+  "Noto Sans SC,PingFang SC, Hiragino Sans GB, Heiti SC, Microsoft YaHei, Songti SC";
 
 export const GET = async (request: Request) => {
   const params = new URL(request.url).searchParams;
   const id = params.get("id");
+  const __next__base__dirname = __dirname.split(".next")[0];
+
+  GlobalFonts.loadFontsFromDir(
+    path.join(__next__base__dirname, "NotoSansSC-VariableFont_wght.ttf")
+  );
+
+  console.log(
+    GlobalFonts.families.filter((item) => item.family.includes("SC"))
+  );
 
   let book = null;
   if (id) {
@@ -99,8 +110,8 @@ export const GET = async (request: Request) => {
     const textWidth = ctx.measureText(text).width;
     ctx.fillText(
       `${process.env.NEXT_PUBLIC_USER} 的 Kindle`,
-      1500 / 2 - textWidth / 2,
-      421 / 2
+      1024 / 2 - textWidth / 2,
+      536 / 2
     );
   }
 
