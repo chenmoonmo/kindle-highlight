@@ -1,5 +1,5 @@
-import { createCanvas } from "canvas";
 import { getClippings } from "@/utils";
+import { createCanvas } from "canvas";
 
 export const GET = async (request: Request) => {
   const params = new URL(request.url).searchParams;
@@ -62,17 +62,17 @@ export const GET = async (request: Request) => {
   ctx.fill();
 
   ctx.fillStyle = "#fff";
-  ctx.font = "40px bold Arial";
+  ctx.font = "40px bold arial";
   ctx.fillText("Kindle", 687, 342 + 40);
 
   if (book) {
     ctx.fillStyle = "#000";
-    ctx.font = "36px bold Arial";
+    ctx.font = "36px bold";
     const showTitle =
       book.title.length > 15 ? book.title.slice(0, 15) + "..." : book.title;
     ctx.fillText(showTitle, 103, 96);
     const showTitleLengt = ctx.measureText(showTitle).width;
-    ctx.font = "24px Arial";
+    ctx.font = "24px bold arial";
     if (book.author) {
       ctx.fillText(book.author, 103 + showTitleLengt + 20, 96);
     }
@@ -88,13 +88,13 @@ export const GET = async (request: Request) => {
     });
   } else {
     ctx.fillStyle = "#000";
-    ctx.font = "50px bold Arial";
+    ctx.font = "50px bold arial";
     const text = `${process.env.NEXT_PUBLIC_USER} 的 Kindle`;
     const textWidth = ctx.measureText(text).width;
     ctx.fillText(
       `${process.env.NEXT_PUBLIC_USER} 的 Kindle`,
       1500 / 2 - textWidth / 2,
-      421 / 2 
+      421 / 2
     );
   }
 
