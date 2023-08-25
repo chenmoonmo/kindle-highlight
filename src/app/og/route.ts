@@ -1,9 +1,24 @@
 import { getClippings } from "@/utils";
-import { createCanvas } from "canvas";
+import { createCanvas, GlobalFonts } from "@napi-rs/canvas";
+import path from "path";
 
 export const GET = async (request: Request) => {
   const params = new URL(request.url).searchParams;
   const id = params.get("id");
+
+  // NotoSansSC-VariableFont_wght.ttf
+
+  GlobalFonts.registerFromPath(
+    path.join(__dirname, "../../public/NotoSansSC-VariableFont_wght.ttf"),
+    "Noto Sans SC"
+  );
+
+  console.log(
+    GlobalFonts.families
+      .map((item) => item.family)
+      .filter((i) => i.includes("SC"))
+      .sort()
+  );
 
   let book = null;
   if (id) {
@@ -62,17 +77,17 @@ export const GET = async (request: Request) => {
   ctx.fill();
 
   ctx.fillStyle = "#fff";
-  ctx.font = "40px bold arial";
+  ctx.font = "bold 40px Noto Sans SC";
   ctx.fillText("Kindle", 687, 342 + 40);
 
   if (book) {
     ctx.fillStyle = "#000";
-    ctx.font = "36px bold";
+    ctx.font = "bold 36px Noto Sans SC";
     const showTitle =
       book.title.length > 15 ? book.title.slice(0, 15) + "..." : book.title;
     ctx.fillText(showTitle, 103, 96);
     const showTitleLengt = ctx.measureText(showTitle).width;
-    ctx.font = "24px bold arial";
+    ctx.font = "bold 24px Noto Sans SC";
     if (book.author) {
       ctx.fillText(book.author, 103 + showTitleLengt + 20, 96);
     }
@@ -88,7 +103,7 @@ export const GET = async (request: Request) => {
     });
   } else {
     ctx.fillStyle = "#000";
-    ctx.font = "50px bold arial";
+    ctx.font = "bold 50px Noto Sans SC";
     const text = `${process.env.NEXT_PUBLIC_USER} 的 Kindle`;
     const textWidth = ctx.measureText(text).width;
     ctx.fillText(
