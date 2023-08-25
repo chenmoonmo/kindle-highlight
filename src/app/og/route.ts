@@ -11,12 +11,12 @@ export const GET = async (request: Request) => {
   const __next__base__dirname = __dirname.split(".next")[0];
 
   GlobalFonts.registerFromPath(
-    path.join(__next__base__dirname, "/public/NotoSansSC-VariableFont_wght.ttf"),
+    path.join(process.cwd(), "/public/NotoSansSC-VariableFont_wght.ttf"),
     "Noto Sans SC"
   );
 
   console.log(
-    path.join(__next__base__dirname, "/public/NotoSansSC-VariableFont_wght.ttf"),
+    path.join(process.cwd(), "/public/NotoSansSC-VariableFont_wght.ttf"),
     GlobalFonts.families.filter((item) => item.family.includes("SC"))
   );
 
