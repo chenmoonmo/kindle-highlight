@@ -1,4 +1,4 @@
-import { Flex, Text, Tooltip } from "@radix-ui/themes";
+import { Flex } from "@radix-ui/themes";
 import { KindleHighlight, KindleSubHeader } from "@/components";
 import { Time } from "./time";
 import { getClippings } from "@/utils";
@@ -16,6 +16,17 @@ export const generateMetadata = async ({
 
   return {
     title: book?.title,
+    twitter: {
+      card: "summary_large_image",
+      title: `${book?.title} - ${process.env.NEXT_PUBLIC_USER} 的 Kindle`,
+      description: `我在 ${book?.title} 中标注了 ${book?.highlights.length} 条摘录`,
+      images: "/og?id=" + id,
+    },
+    openGraph: {
+      title: `${book?.title} - ${process.env.NEXT_PUBLIC_USER} 的 Kindle`,
+      description: `我在 ${book?.title} 中标注了 ${book?.highlights.length} 条摘录`,
+      images: "/og?id=" + id,
+    },
   };
 };
 
