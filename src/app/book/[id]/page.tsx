@@ -20,12 +20,10 @@ export const generateMetadata = async ({
       card: "summary_large_image",
       title: `${book?.title} - ${process.env.NEXT_PUBLIC_USER} 的 Kindle`,
       description: `共 ${book?.highlights.length} 条摘录`,
-      images: "/og?id=" + id,
     },
     openGraph: {
       title: `${book?.title} - ${process.env.NEXT_PUBLIC_USER} 的 Kindle`,
       description: `共 ${book?.highlights.length} 条摘录`,
-      images: `/og?id=${id}`,
       url: `/book/${id}`,
     },
   };

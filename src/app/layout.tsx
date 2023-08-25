@@ -16,14 +16,12 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `${process.env.NEXT_PUBLIC_USER} 的 Kindle`,
     description: `${process.env.NEXT_PUBLIC_USER} 的 Kindle 笔记。`,
-    images: "/og",
   },
   openGraph: {
     title: `${process.env.NEXT_PUBLIC_USER} 的 Kindle`,
     description: `${process.env.NEXT_PUBLIC_USER} 的 Kindle 笔记。`,
     type: "website",
     locale: "zh_CN",
-    images: "/og",
     url: '/'
   },
   icons: "/favicon.png",

@@ -1,6 +1,7 @@
 import { readFileSync } from "fs";
 import { toObject } from "kindle-zhcn-clippings-to-json";
 import path from "path";
+// import { headers } from "next/headers";
 
 export type HighlightType = ReturnType<typeof toObject>[number] & {
   id: number;
@@ -15,6 +16,9 @@ type BookType = {
 };
 
 export async function getClippings() {
+  // const host = headers().get("host");
+  // const protocal = process?.env.NODE_ENV === "development" ? "http" : "https";
+
   const myClippings = await readFileSync(
     path.join(process.cwd(), "/public/My Clippings.txt"),
     {
