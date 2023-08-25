@@ -7,6 +7,7 @@ import { Provider } from "./provider";
 import "./theme-config.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://p-moonlight.zeabur.app'),
   title: {
     template: `%s | ${process.env.NEXT_PUBLIC_USER} 的 Kindle`,
     default: `${process.env.NEXT_PUBLIC_USER} 的 Kindle`,
