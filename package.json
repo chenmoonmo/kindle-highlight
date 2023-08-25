@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@napi-rs/canvas": "^0.1.44",
     "@radix-ui/themes": "^1.0.0",
     "@types/node": "20.4.9",
     "@types/react": "18.2.20",
