@@ -14,6 +14,11 @@ export const GET = async (request: Request) => {
     "Noto Sans SC"
   );
 
+  GlobalFonts.registerFromPath(
+    path.join(process.cwd(), "/public/AmazonEmber_Rg.ttf"),
+    "Amazon Ember"
+  );
+
   let book = null;
   if (id) {
     const books = await getClippings();
@@ -70,8 +75,8 @@ export const GET = async (request: Request) => {
   ctx.closePath();
   ctx.fill();
 
-  ctx.fillStyle = "#fff";
-  ctx.font = `bold 40px ${fonts}`;
+  ctx.fillStyle = "#9BA3AF";
+  ctx.font = `500 40px Amazon Ember`;
   ctx.fillText("Kindle", 460, 453 + 40);
 
   if (book) {

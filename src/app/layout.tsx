@@ -24,6 +24,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "zh_CN",
     images: "/og",
+    url: '/'
   },
   icons: "/favicon.png",
 };

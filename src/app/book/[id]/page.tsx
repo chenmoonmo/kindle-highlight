@@ -19,13 +19,14 @@ export const generateMetadata = async ({
     twitter: {
       card: "summary_large_image",
       title: `${book?.title} - ${process.env.NEXT_PUBLIC_USER} 的 Kindle`,
-      description: `我在 ${book?.title} 中标注了 ${book?.highlights.length} 条摘录`,
+      description: `共 ${book?.highlights.length} 条摘录`,
       images: "/og?id=" + id,
     },
     openGraph: {
       title: `${book?.title} - ${process.env.NEXT_PUBLIC_USER} 的 Kindle`,
-      description: `我在 ${book?.title} 中标注了 ${book?.highlights.length} 条摘录`,
-      images: "/og?id=" + id,
+      description: `共 ${book?.highlights.length} 条摘录`,
+      images: `/og?id=${id}`,
+      url: `/book/${id}`,
     },
   };
 };
