@@ -1,22 +1,11 @@
 import { getClippings } from "@/utils";
-import { createCanvas, GlobalFonts } from "@napi-rs/canvas";
-import path from "path";
+import { createCanvas } from "@napi-rs/canvas";
+
+const fonts = "PingFang SC, Hiragino Sans GB, Heiti SC, Microsoft YaHei";
 
 export const GET = async (request: Request) => {
   const params = new URL(request.url).searchParams;
   const id = params.get("id");
-
-  GlobalFonts.registerFromPath(
-    path.join(__dirname, "../../public/NotoSansSC-VariableFont_wght.ttf"),
-    "Noto Sans SC"
-  );
-
-  console.log(
-    GlobalFonts.families
-      .map((item) => item.family)
-      .filter((i) => i.includes("SC"))
-      .sort()
-  );
 
   let book = null;
   if (id) {
@@ -47,7 +36,12 @@ export const GET = async (request: Request) => {
     txtList.forEach((txt, index) => {
       const textWidth = ctx.measureText(txt).width;
       ctx.fillStyle = "#e7e7e7";
-      ctx.fillRect(x, y + lineHeight * index - 36 +2, textWidth, lineHeight - 4);
+      ctx.fillRect(
+        x,
+        y + lineHeight * index - 36 + 2,
+        textWidth,
+        lineHeight - 4
+      );
       ctx.fillStyle = "#000";
       ctx.fillText(txt, x, y + lineHeight * index);
     });
@@ -75,19 +69,20 @@ export const GET = async (request: Request) => {
   ctx.fill();
 
   ctx.fillStyle = "#fff";
-  ctx.font = "bold 40px Noto Sans SC";
+  ctx.font = `bold 40px ${fonts}`;
   ctx.fillText("Kindle", 687, 629 + 40);
 
   if (book) {
     ctx.fillStyle = "#000";
-    ctx.font = "bold 50px Noto Sans SC";
+    ctx.font = `bold 50px ${fonts}`;
     const showTitle =
       book.title.length > 15 ? book.title.slice(0, 15) + "..." : book.title;
     ctx.fillText(showTitle, 103, 110);
 
     if (book.author) {
       const showTitleLengh = ctx.measureText(showTitle).width;
-      ctx.font = "bold 24px Noto Sans SC";
+      ctx.font = `bold 24px ${fonts}`;
+
       ctx.fillText(book.author, 103 + showTitleLengh + 20, 110);
     }
 
@@ -96,14 +91,15 @@ export const GET = async (request: Request) => {
     book.highlights.map((highlight) => {
       if (startY < 500)
         if (highlight.text) {
-          ctx.font = "bold 36px Noto Sans SC";
+          ctx.font = `bold 36px ${fonts}`;
           const textHeight = drawText(highlight.text, 103, startY);
           startY += textHeight + 45;
         }
     });
   } else {
     ctx.fillStyle = "#000";
-    ctx.font = "bold 80px Noto Sans SC";
+    ctx.font = `bold 80px ${fonts}`;
+
     const text = `${process.env.NEXT_PUBLIC_USER} 的 Kindle`;
     const textWidth = ctx.measureText(text).width;
     ctx.fillText(
