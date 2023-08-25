@@ -1,5 +1,6 @@
+import { readFileSync } from "fs";
 import { toObject } from "kindle-zhcn-clippings-to-json";
-import { headers } from "next/headers";
+import path from "path";
 
 export type HighlightType = ReturnType<typeof toObject>[number] & {
   id: number;
@@ -14,17 +15,12 @@ type BookType = {
 };
 
 export async function getClippings() {
-  const host = headers().get("host");
-  const protocal = process?.env.NODE_ENV === "development" ? "http" : "https";
-
-  const myClippings = await fetch(`${protocal}://${host}/My Clippings.txt`, {
-    method: "GET",
-    next: {
-      revalidate: false,
-    },
-  }).then((response) => {
-    return response.text();
-  });
+  const myClippings = await readFileSync(
+    path.join(process.cwd(), "/public/My Clippings.txt"),
+    {
+      encoding: "utf-8",
+    }
+  );
 
   const clippings = toObject(myClippings);
   const books: {
@@ -58,14 +54,14 @@ export async function getClippings() {
   });
 
   notes.map((note) => {
-    const currentHighlights = books[note.title].highlights.find(
+    const currentHighlight = books[note.title].highlights.find(
       (highlight) =>
         highlight.start &&
         highlight.end &&
         highlight.start <= note.start &&
         highlight.end >= note.start
     );
-    currentHighlights?.notes.push(note);
+    currentHighlight?.notes.push(note);
   });
 
   return Object.values(books);

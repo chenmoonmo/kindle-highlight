@@ -18,6 +18,7 @@ export const KindleSubHeader: React.FC<KindleSubHeaderProps> = ({
       align="center"
       px="2"
       py="1"
+      gap="1"
       className={cn(["border-b-[1px] w-full", className])}
     >
       <Text
