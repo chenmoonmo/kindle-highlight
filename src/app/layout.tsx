@@ -5,27 +5,34 @@ import "@radix-ui/themes/styles.css";
 import { KindleContainer } from "@/components";
 import { Provider } from "./provider";
 import "./theme-config.css";
+import { headers } from "next/headers";
 
-export const metadata: Metadata = {
-  metadataBase: new URL('https://p-moonlight.zeabur.app'),
-  title: {
-    template: `%s | ${process.env.NEXT_PUBLIC_USER} 的 Kindle`,
-    default: `${process.env.NEXT_PUBLIC_USER} 的 Kindle`,
-  },
-  description: `${process.env.NEXT_PUBLIC_USER} 的 Kindle 笔记。`,
-  twitter: {
-    card: "summary_large_image",
-    title: `${process.env.NEXT_PUBLIC_USER} 的 Kindle`,
+export const generateMetadata = async () => {
+  const host = headers().get("host");
+  const protocol = host?.includes("localhost") ? "http" : "https";
+  const metadataBase = new URL(`${protocol}://${host}`);
+  
+  return {
+    metadataBase,
+    title: {
+      template: `%s | ${process.env.NEXT_PUBLIC_USER} 的 Kindle`,
+      default: `${process.env.NEXT_PUBLIC_USER} 的 Kindle`,
+    },
     description: `${process.env.NEXT_PUBLIC_USER} 的 Kindle 笔记。`,
-  },
-  openGraph: {
-    title: `${process.env.NEXT_PUBLIC_USER} 的 Kindle`,
-    description: `${process.env.NEXT_PUBLIC_USER} 的 Kindle 笔记。`,
-    type: "website",
-    locale: "zh_CN",
-    url: '/'
-  },
-  icons: "/favicon.png",
+    twitter: {
+      card: "summary_large_image",
+      title: `${process.env.NEXT_PUBLIC_USER} 的 Kindle`,
+      description: `${process.env.NEXT_PUBLIC_USER} 的 Kindle 笔记。`,
+    },
+    openGraph: {
+      title: `${process.env.NEXT_PUBLIC_USER} 的 Kindle`,
+      description: `${process.env.NEXT_PUBLIC_USER} 的 Kindle 笔记。`,
+      type: "website",
+      locale: "zh_CN",
+      url: "/",
+    },
+    icons: "/favicon.png",
+  };
 };
 
 export default function RootLayout({

@@ -11,6 +11,7 @@ export const generateMetadata = async ({
     id: string;
   };
 }) => {
+
   const books = await getClippings();
   const book = books.find((book) => book.id === Number(id));
 
