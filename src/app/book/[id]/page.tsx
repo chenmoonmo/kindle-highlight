@@ -11,7 +11,6 @@ export const generateMetadata = async ({
     id: string;
   };
 }) => {
-
   const books = await getClippings();
   const book = books.find((book) => book.id === Number(id));
 
@@ -30,14 +29,14 @@ export const generateMetadata = async ({
   };
 };
 
-export const generateStaticParams = async () => {
-  const books = await getClippings();
-  return books.map((book) => ({
-    params: {
-      id: book.id.toString(),
-    },
-  }));
-};
+// export const generateStaticParams = async () => {
+//   const books = await getClippings();
+//   return books.map((book) => ({
+//     params: {
+//       id: book.id.toString(),
+//     },
+//   }));
+// };
 
 export default async function Book({
   params: { id },

@@ -1,17 +1,15 @@
 import "./globals.css";
-import type { Metadata } from "next";
-import { Theme } from "@radix-ui/themes";
+import "./theme-config.css";
 import "@radix-ui/themes/styles.css";
+import { Theme } from "@radix-ui/themes";
+import { headers } from "next/headers";
 import { KindleContainer } from "@/components";
 import { Provider } from "./provider";
-import "./theme-config.css";
-import { headers } from "next/headers";
 
 export const generateMetadata = async () => {
   const host = headers().get("host");
   const protocol = host?.includes("localhost") ? "http" : "https";
   const metadataBase = new URL(`${protocol}://${host}`);
-  
   return {
     metadataBase,
     title: {
