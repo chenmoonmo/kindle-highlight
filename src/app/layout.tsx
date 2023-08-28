@@ -5,8 +5,9 @@ import { Theme } from "@radix-ui/themes";
 import { headers } from "next/headers";
 import { KindleContainer } from "@/components";
 import { Provider } from "./provider";
+import { Metadata } from "next";
 
-export const generateMetadata = async () => {
+export const generateMetadata = async (): Promise<Metadata> => {
   const host = headers().get("host");
   const protocol = host?.includes("localhost") ? "http" : "https";
   const metadataBase = new URL(`${protocol}://${host}`);
@@ -30,6 +31,7 @@ export const generateMetadata = async () => {
       url: "/",
     },
     icons: "/favicon.png",
+    keywords: "Kindle, 笔记, Kindle 笔记",
   };
 };
 

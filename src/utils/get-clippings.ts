@@ -1,6 +1,4 @@
-import { readFileSync } from "fs";
 import { toObject } from "kindle-zhcn-clippings-to-json";
-import path from "path";
 
 export type HighlightType = ReturnType<typeof toObject>[number] & {
   id: number;
@@ -15,13 +13,7 @@ type BookType = {
 };
 
 export async function getClippings() {
-  const myClippings = await readFileSync(
-    path.join(process.cwd(), "/public/My Clippings.txt"),
-    {
-      encoding: "utf-8",
-    }
-  );
-
+  const myClippings = process.env.MY_CLIPPINGS as string;
   const clippings = toObject(myClippings);
   const books: {
     [key: string]: BookType;
@@ -41,14 +33,19 @@ export async function getClippings() {
         };
         books[clipping.title] = book;
       }
-      if (clipping.type === "Note") {
-        notes.push(clipping);
-      } else {
-        books[clipping.title].highlights.push({
-          ...clipping,
-          id: highlightId++,
-          notes: [],
-        });
+      switch (clipping.type) {
+        case "Highlight":
+          books[clipping.title].highlights.push({
+            ...clipping,
+            id: highlightId++,
+            notes: [],
+          });
+          break;
+        case "Note":
+          notes.push(clipping);
+          break;
+        default:
+          break;
       }
     }
   });
