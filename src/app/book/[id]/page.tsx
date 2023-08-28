@@ -3,6 +3,7 @@ import { KindleHighlight, KindleSubHeader } from "@/components";
 import { Time } from "./time";
 import { getClippings } from "@/utils";
 import { notFound } from "next/navigation";
+import { Metadata } from "next";
 
 export const generateMetadata = async ({
   params: { id },
@@ -10,7 +11,7 @@ export const generateMetadata = async ({
   params: {
     id: string;
   };
-}) => {
+}): Promise<Metadata> => {
   const books = await getClippings();
   const book = books.find((book) => book.id === Number(id));
 
@@ -26,17 +27,9 @@ export const generateMetadata = async ({
       description: `共 ${book?.highlights.length} 条摘录`,
       url: `/book/${id}`,
     },
+    keywords: `${book?.title},${book?.author}`,
   };
 };
-
-// export const generateStaticParams = async () => {
-//   const books = await getClippings();
-//   return books.map((book) => ({
-//     params: {
-//       id: book.id.toString(),
-//     },
-//   }));
-// };
 
 export default async function Book({
   params: { id },

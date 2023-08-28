@@ -80,6 +80,14 @@ export const Search: FC<SearchProps> = ({ defaultValue = "" }) => {
                   关于
                 </Text>
               </Link>
+              <Link
+                href="/feed"
+                className="px-1 py-2 cursor-pointer hover:bg-black hover:text-white"
+              >
+                <Text size="2" weight="bold">
+                  RSS
+                </Text>
+              </Link>
             </Flex>
           </Popover.Content>
         </Popover.Root>
