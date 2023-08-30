@@ -1,4 +1,5 @@
 import { getClippings } from "@/utils";
+import dayjs from "dayjs";
 import { headers } from "next/headers";
 import RSS from "rss";
 
@@ -17,14 +18,20 @@ export async function GET(res: Request) {
   });
 
   books.forEach((book) => {
-    const { title, author, id } = book;
+    const { title, author, id, highlights } = book;
     feed.item({
-      title: `「${title} - ${author}」的书摘`,
+      title: `书摘 -《${title}》- ${author}`,
       url: `${protocol}://${host}/books/${id}`,
-      date: new Date().toUTCString(),
-      description: book.highlights
-        .map((highlight) => highlight.text)
-        .join("\n"),
+      date: dayjs(highlights.at(-1)?.time).toDate(),
+      description: highlights
+        .map((highlight) => {
+          const note = highlight?.notes[0]?.text;
+          const noteText = note
+            ? `<p>【笔记：${note}】</p>`
+            : "";
+          return `<p>${highlight.text}${noteText}</p>`;
+        })
+        .join("<div>-------------------</div>"),
     });
   });
 
