@@ -1,6 +1,8 @@
 import { KindleHeader, KindleSubHeader } from "@/components";
 import { Flex, Heading, Link, Text } from "@radix-ui/themes";
 
+export const dynamic = "force-static";
+
 export const metadata = {
   title: "关于",
 };

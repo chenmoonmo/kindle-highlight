@@ -2,16 +2,12 @@ import "./globals.css";
 import "./theme-config.css";
 import "@radix-ui/themes/styles.css";
 import { Theme } from "@radix-ui/themes";
-import { headers } from "next/headers";
 import { KindleContainer } from "@/components";
 import { Provider } from "./provider";
 
 export const generateMetadata = async () => {
-  const host = headers().get("host");
-  const protocol = host?.includes("localhost") ? "http" : "https";
-  const metadataBase = new URL(`${protocol}://${host}`);
   return {
-    metadataBase,
+    metadataBase: new URL(process.env.NEXT_PUBLIC_DOMAIN as string),
     title: {
       template: `%s | ${process.env.NEXT_PUBLIC_USER} 的 Kindle`,
       default: `${process.env.NEXT_PUBLIC_USER} 的 Kindle`,
