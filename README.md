@@ -4,7 +4,7 @@
 </div>
 通过 Kindle 书摘来生成阅读笔记展示网站。 目前仅支持中文笔记，欢迎提 PR 以提供更多语言或其他功能支持。
 
-### [Live Demo](http://moonlight.zeabur.app/)
+### [Live Demo](https://light.moonwillknow.dev/)
 
 ### 使用方法：
 
